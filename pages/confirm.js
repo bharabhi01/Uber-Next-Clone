@@ -5,11 +5,8 @@ import Map from './components/Map'
 import { useRouter } from 'next/router'
 import RideSelector from './components/RideSelector'
 
-
 const Confirm = () => {
-
     const router = useRouter()
-
     const { pickup, dropoff } = router.query
 
     console.log("Pickup", pickup);
@@ -20,7 +17,6 @@ const Confirm = () => {
     const [ dropoffCoordinates, setdropoffCoordinates ] = useState([0,0]);
 
     const getPickupCoordinates = (pickup) => {
-
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` + new URLSearchParams({
                 access_token: "pk.eyJ1IjoieW9hYmhpeW8iLCJhIjoiY2t4YWpzMjY2MHE3ejJ1b2MycGNianUxZyJ9.vkJuAQDwMvet4svWZHwO5g", limit: 1
             })
@@ -32,7 +28,6 @@ const Confirm = () => {
     }
 
     const getDropCoordinates = (dropoff) => {
-
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` + new URLSearchParams({
                 access_token: "pk.eyJ1IjoieW9hYmhpeW8iLCJhIjoiY2t4YWpzMjY2MHE3ejJ1b2MycGNianUxZyJ9.vkJuAQDwMvet4svWZHwO5g", limit: 1
             })
@@ -50,13 +45,11 @@ const Confirm = () => {
     
     return (
         <Wrapper>
-
             <ButtonContainer>
                 <Link href = "/search" >
                     <BackButton src = "https://img.icons8.com/ios-filled/50/000000/left.png" />
                 </Link>
             </ButtonContainer>
-
             <Map 
             pickupCoordinates = {pickupCoordinates}
             dropoffCoordinates = {dropoffCoordinates} 
